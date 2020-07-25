@@ -18,7 +18,7 @@ The submission form will make an alert to let you know if you have to wait for a
 This project uses a MIT license.
 ## Contribution
 Github links for Contributors:
-* [Anj](https://github.com/anjkrish2608)
-* [Jeff](https://github.com/miao0007)
-* [Hong](https://github.com/ZanHong)
-* [Andrew](https://github.com/Andrew836-dev)
+* [anjkrish2608](https://github.com/anjkrish2608)
+* [miao0007](https://github.com/miao0007)
+* [ZanHong](https://github.com/ZanHong)
+* [Andrew836-dev](https://github.com/Andrew836-dev)
