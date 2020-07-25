@@ -1,19 +1,24 @@
 # Hot-Restaurant-Booking-App
 ## Description
-A practice Node.js express server  
+A mini-project for the Full Stack bootcamp. A Node.js express server.  
 ![License badge](https://img.shields.io/badge/license-MIT-green)
 ## Table of Contents
 1. [Installation](#Installation)
 2. [Usage](#Usage)
 3. [License](#License)
 4. [Contribution](#Contribution)
-5. [Questions](#Questions)
 ## Installation
-package.json
+Requires node.js to be installed. Then the included package.json works with `npm install`
 ## Usage
-start the server running, use a browser to make bookings
+Use `node server` to create an instance of the server, and then use a browser to view `localhost:8080`.  
+You can view the current table status and make a booking for a table.  
+The first 5 bookings recieved will be given a table, any bookings after that will be put on the wait list.  
+The submission form will make an alert to let you know if you have to wait for a table.
 ## License
 This project uses a MIT license.
 ## Contribution
-Made by Anjini, Jeff, Hong and Andrew. 
-
+Github links for Contributors:
+* [Anj](https://github.com/anjkrish2608)
+* [Jeff](https://github.com/miao0007)
+* [Hong](https://github.com/ZanHong)
+* [Andrew](https://github.com/Andrew836-dev)
