@@ -1,0 +1,29 @@
+front end
+3 pages, links to each other
+
+home page
+just introduces restaurant
+
+view page
+html to display table status
+
+make page
+form to post customer details for reservation
+
+
+back end
+handle routing for pages
+
+recieve booking information
+
+add to the list
+maximum 5 current reservations
+decide if it's current or waiting list
+anything after that goes on wait list
+
+customerName
+customerEmail
+customerID
+phoneNumber
+
+api to return this stuff

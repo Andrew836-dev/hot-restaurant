@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tables Page</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .links {
+      color: #337ab7;
+    }
+
+    .bookBtn {
+      background-color: #337ab7;
+      border-radius: .25em;
+      margin: 10px;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .booking {
+      border-radius: 4px;
+      border-color: #f5f5f5;
+      border: 1px solid #e3e3e3;
+      background-color: #f5f5f5;
+      margin-bottom: 10px;
+    }
+
+    .tables {
+      background-color: #337ab7;
+      border-color: #2e6da4;
+      color: #eeeeee;
+    }
+
+    h1,
+    h3 {
+      color: #333333;
+    }
+
+    #submit {
+      background-color: #337ab7;
+      border-color: #2e6da4;
+      color: #eeeeee;
+    }
+
+    .reserve {
+      background-color: #d9534f;
+      border-color: #d43f3a;
+      color: #eeeeee;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="jumbotron" style="text-align: center;">
+      <h1><i class="fab fa-hotjar"></i> Hot Restaurant</h1>
+      <hr>
+      <h3>Current Reservations and Waiting List</h3>
+      <br>
+      <a href="/reserve"><button class="btn btn-lg reserve"><i class="fas fa-credit-card"></i> Make
+          Reservation</button></a>
+      <a href="/"><button class="btn btn-lg btn-light"><i class="fas fa-home"></i></button></a>
+    </div>
+    <div class="row">
+
+      <div class="col-12">
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3 style="font-size: 14pt;">Current Reservations</h3>
+          </div>
+
+          <div class="card-body" id="current">
+
+            <!-- add reservations here -->
+
+            <!-- example booking element -->
+            <!-- <div class="booking" style="display:none;">
+              <h2 id="customer0"><button class="btn bookBtn">1</button> | <span ></span></h2>
+            </div>
+
+            <div class="booking" style="display:none;">
+              <h2 id="customer1"><button class="btn bookBtn">2</button> | <span ></span></h2>
+            </div>
+            <div class="booking" style="display:none;">
+              <h2 id="customer2"><button class="btn bookBtn">3</button> | <span ></span></h2>
+            </div>
+            <div class="booking" style="display:none;">
+              <h2 id="customer3"><button class="btn bookBtn">4</button> | <span ></span></h2>
+            </div>
+            <div class="booking" style="display:none;">
+              <h2 id="customer4"><button class="btn bookBtn">5</button> | <span ></span></h2>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 style="font-size: 14pt;">Waiting List</h3>
+          </div>
+          <div class="card-body" id="waiting">
+            <!-- add waitlist here -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <footer>
+      <div>
+        Control Panel
+        <br>
+        <a href="#" id="clear" class="links">Clear Table</a> | <a href="/api/tables" class="links">API Table Link</a> |
+        <a href="/api/waitlist" class="links">API Wait List</a>
+
+      </div>
+    </footer>
+  </div>
+
+  <script type="text/javascript">
+    $.get("/api/tables/", function (data) {
+      // console.log(data);
+      // <div class="booking" style="display: inline;">
+      //         <h2 id="customer2"><button class="btn bookBtn">3</button> | <span></span>Hong</h2>
+      //       </div>
+      for (let i = 0; i < data.length; i++) {
+        $("#current").append(
+          $("<div>").addClass("booking").append(
+            $("<h2>").html(`<button class="btn bookBtn">${i+1}</button> | ${data[i].customerName}`)
+          )
+        );
+      }
+    });
+
+    $.get("/api/waitlist", function (data) {
+      data.forEach(customer => $("#waiting").append($("<h2>").text(customer.customerName)));
+    });
+
+    $("#clear").on("click", function () {
+      event.preventDefault();
+      alert("Clearing list");
+      clearTable();
+      location.reload();
+    });
+
+    function clearTable() {
+      $.ajax({
+        url: "/api/clear",
+        method: "GET"
+      }).then(response => {
+        alert("Cleared the list");
+        console.log(response);
+      });
+    }
+  </script>
+</body>
+
+</html>
